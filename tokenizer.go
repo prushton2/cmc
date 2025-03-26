@@ -17,7 +17,6 @@ const (
 	PUNCTUATOR     = 8
 )
 
-
 type Token struct {
 	value string
 	tokenType int
@@ -68,7 +67,7 @@ func parseNextToken(s string, startIndex int) (Token, int) {
 		return token, startIndex + find[0][1] - find[0][0];
 	}
 
-	// fmt.Println(token)
+	fmt.Println(token)
 
 	return token, startIndex;
 }
