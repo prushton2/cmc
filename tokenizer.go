@@ -51,7 +51,6 @@ func parseNextToken(s string, startIndex int) (Token, int) {
 
 	if(find != nil && find[0][0] == 0) {
 		token = Token{tokenType: IDENTIFIER, value: s[find[0][0]:find[0][1]]}
-		fmt.Println("AAA", find[0][0], find[0][1])
 		return token, startIndex + find[0][1] - find[0][0];
 	}
 
