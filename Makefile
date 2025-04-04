@@ -1,8 +1,10 @@
+GOFILES = (main.go tokenizer.go)
+
 make:
 	go run .
 
 build:
-	go build src/main.go
+	go build GOFILES
 
 clean:
 	rm main

@@ -15,6 +15,8 @@ const (
 
 	STRINGLITERAL  = 7
 	PUNCTUATOR     = 8
+
+	EOF		  	   = -1
 )
 
 type Token struct {
@@ -23,6 +25,10 @@ type Token struct {
 }
 
 func parseNextToken(s string, startIndex int) (Token, int) {
+	if(startIndex >= len(s)) {
+		return Token{value: "", tokenType: -1}, startIndex
+	}
+
 	s = s[startIndex:]
 
 	// fmt.Println("Parsing", s)
@@ -37,9 +43,9 @@ func parseNextToken(s string, startIndex int) (Token, int) {
 	var floatconstant = regexp.MustCompile("[0-9]*\\.[0-9]*")
 
 	// add octal, hex, and bin
-	var intconstant = regexp.MustCompile("[1-9][0-9]*")
+	var intconstant = regexp.MustCompile("[0-9][0-9]*")
 
-	var punctuator = regexp.MustCompile("([\\+\\-\\*\\/\\=\\%\\&\\|\\^\\~\\!\\<\\>\\?\\.\\:\\;\\,])")
+	var punctuator = regexp.MustCompile(`(\+\+|--|&&|\|\||<<=|>>=|==|!=|<=|>=|<<|>>|\+=|-=|\*=|/=|%=|&=|\^=|\|=|::|->|\.{3}|<:|:>|<%|%>|%:|%:%:|[+\-*/%^&|~!=<>?:;.,#()\[\]{}])`)
 
 	for s[0] == ' ' || s[0] == '\n' { //destroy any whitespace between tokens
 		s = s[1:]
