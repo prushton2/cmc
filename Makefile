@@ -1,10 +1,12 @@
-GOFILES = (main.go tokenizer.go)
+GOFILES = main.go tokenizer.go
+PROGRAM = main
 
 make:
 	go run .
 
-build:
-	go build GOFILES
+main:
+	go build -o $(PROGRAM) $(GOFILES)
 
 clean:
 	rm main
+

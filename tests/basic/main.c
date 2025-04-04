@@ -3,5 +3,10 @@ int dereferenceOffsetInt(int* p, int offset) {
 }
 
 int main() {
-    return 0;
+    int a[5] = {1, 2, 3, 4, 5};
+    int* p = a;
+    int offset = 8;
+    int result = dereferenceOffsetInt(p, offset);
+    
+    return result;
 }

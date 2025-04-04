@@ -45,6 +45,7 @@ func parseNextToken(s string, startIndex int) (Token, int) {
 	// add octal, hex, and bin
 	var intconstant = regexp.MustCompile("[0-9][0-9]*")
 
+	// done
 	var punctuator = regexp.MustCompile(`(\+\+|--|&&|\|\||<<=|>>=|==|!=|<=|>=|<<|>>|\+=|-=|\*=|/=|%=|&=|\^=|\|=|::|->|\.{3}|<:|:>|<%|%>|%:|%:%:|[+\-*/%^&|~!=<>?:;.,#()\[\]{}])`)
 
 	for s[0] == ' ' || s[0] == '\n' { //destroy any whitespace between tokens
